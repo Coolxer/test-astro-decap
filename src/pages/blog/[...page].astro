@@ -27,7 +27,7 @@ export async function getStaticPaths({
 }: {
   paginate: PaginateFunction
 }) {
-  const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
+  const posts: CollectionEntry<"posts">[] = (await getCollection("posts"))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
@@ -55,7 +55,7 @@ export async function getStaticPaths({
 interface Props {
   page: Page
   categories: string[]
-  selectedKnowledgeBasePosts: CollectionEntry<"blog">[]
+  selectedKnowledgeBasePosts: CollectionEntry<"posts">[]
 }
 
 const { page, categories, selectedKnowledgeBasePosts } = Astro.props

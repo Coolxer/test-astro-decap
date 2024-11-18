@@ -10,7 +10,8 @@ import devtoolBreakpoints from "astro-devtool-breakpoints"
 import react from "@astrojs/react"
 import partytown from "@astrojs/partytown"
 import robotsTxt from "astro-robots-txt"
-
+import markdoc from "@astrojs/markdoc"
+import keystatic from "@keystatic/astro"
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // https://astro.build/config
@@ -18,7 +19,7 @@ export default defineConfig({
   site: data.site.domain,
   base: "",
   trailingSlash: data.site.trailingSlash,
-  output: "static",
+  output: "hybrid", //"static",
   compressHTML: true,
   scopedStyleStrategy: "class",
   build: {
@@ -45,6 +46,8 @@ export default defineConfig({
     }),
     devtoolBreakpoints(),
     react(),
+    markdoc(),
+    keystatic(),
     partytown({
       config: {
         debug: false,
@@ -69,7 +72,7 @@ export default defineConfig({
       // true
       Logger: 1,
       Path: ["./dist"],
-    })
+    }),
   ],
   vite: {
     resolve: {

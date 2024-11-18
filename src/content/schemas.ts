@@ -85,7 +85,7 @@ export const metaSchema =
       .optional(),
   })
 
-export const blogSchema = z.object({
+export const postSchema = z.object({
     meta: metaSchema,
     // focusKeyword
     // otherKeywords
@@ -105,7 +105,7 @@ export const blogSchema = z.object({
       .default(["brak kategorii"]),
     // tags: z.array(z.string()).optional(),
     knowledgeBase: z.boolean().default(false),
-    relatedPosts: z.array(reference("blog")).max(3).optional(),
+    relatedPosts: z.array(reference("posts")).max(3).optional(),
     date: z.coerce.date(),
     author: z.string().optional(),
     draft: z.boolean().optional(),
