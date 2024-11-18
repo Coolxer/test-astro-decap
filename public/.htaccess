@@ -6,7 +6,7 @@ RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
 RewriteCond %{HTTPS} off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
-# Przekierowanie starych stron do nowej
+# Przekierowanie starych stron do nowe
 RewriteRule ^oferta/ocena-strony-www/?$ /oferta/poprawa-strony-www/ [R=301,L]
 RewriteRule ^oferta/rozwoj-strony-www/?$ /oferta/poprawa-strony-www/ [R=301,L]
 

@@ -30,49 +30,7 @@ export default {
       // => @media (min-width: 1280px) { ... }
     },
     fontFamily: { poppins: ["Poppins", "sans-serif"] },
-    // opacity: {
-    //   0: 0,
-    //   15: 0.15,
-    //   25: 0.25,
-    //   50: 0.5,
-    //   75: 0.75,
-    //   100: 1,
-    // },
-    // spacing: {
-    // 0
-    // px
-    // 0.5
-    // 1
-    // 2
-    // 4
-    // 6
-    // 8
-    // 10
-    // 12
-    // 16
-    // 24
-    // 32
-    // 40
-    // 48
-    // 60
-    // 72
-    // 80
-    // 96
-    // },
-    borderWidth: {
-      0: "0",
-      2: "2px",
-      DEFAULT: "2px",
-      bold: "4px",
-    },
-    borderRadius: {
-      none: "0",
-      sm: "0.5rem",
-      DEFAULT: "0.5rem",
-      md: "1rem",
-      lg: "2rem",
-      full: "9999px",
-    },
+
     extend: {
       fontSize: {
         h0: [
@@ -142,6 +100,6 @@ export default {
     require("@tailwindcss/forms")({
       strategy: "base",
     }),
-    require("flowbite/plugin"),
+    require("@tailwindcss/aspect-ratio"),
   ],
 }

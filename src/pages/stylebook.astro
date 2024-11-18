@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components"
 
 import { type Meta } from "@components/core/MySEO.astro"
 
-import glassImage from "@assets/images/pages/cyfryzacja.webp"
+import image from "@assets/images/placeholder.webp"
 
 import PageLayout from "@layouts/PageLayout.astro"
 
@@ -43,7 +43,7 @@ const loremDescription =
 <PageLayout pageTitle={pageTitle} pageDescription={pageDescription} meta={meta}>
   <!-- Optimized background image -->
   <!-- <div class="relative min-h-screen w-full">
-    <MyImage img={glassImage} alt="person with VR glasses" class="l-0 t-0 absolute -z-10 size-full" />
+    <MyImage img={image} alt="person with VR glasses" class="l-0 t-0 absolute -z-10 size-full" />
     <p class="relative z-10 text-white">Tutaj tresc</p>
   </div> -->
 
@@ -318,7 +318,7 @@ const loremDescription =
     <h2>Licznik i ikona</h2>
     <div class="row flex items-center">
       <Counter value={23} />
-      <Icon name="chevron-left" class="size-12" width={48} height={48} />
+      <Icon name="tabler:chevron-left" class="size-12" width={48} height={48} />
     </div>
   </Section>
 
@@ -326,7 +326,7 @@ const loremDescription =
   <Section>
     <!-- Image -->
     <h2>Obraz</h2>
-    <MyImage img={glassImage} alt="" />
+    <MyImage img={image} alt="" />
 
     <!-- Image with simply overlay-->
     <h2>Obraz z prostą nakładką</h2>
@@ -356,9 +356,9 @@ const loremDescription =
     <Gallery
       id="gal1"
       images={[
-        { data: glassImage, alt: "glass" },
-        { data: glassImage, alt: "glass2" },
-        { data: glassImage, alt: "glass3" },
+        { data: image, alt: "glass" },
+        { data: image, alt: "glass2" },
+        { data: image, alt: "glass3" },
       ]}
       zoom
     />
@@ -370,9 +370,9 @@ const loremDescription =
     <Carousel
       id="car1"
       images={[
-        { data: glassImage, alt: "glass" },
-        { data: glassImage, alt: "glass2" },
-        { data: glassImage, alt: "glass3" },
+        { data: image, alt: "glass" },
+        { data: image, alt: "glass2" },
+        { data: image, alt: "glass3" },
       ]}
       lightbox
     />
