@@ -37,8 +37,6 @@ Głównym celem Relume jest przyspieszenie procesu projektowania i zapewnienie w
 
 Integracja Relumę z Figmą jeszcze bardziej upraszcza pracę. Komponenty Relume można bezpośrednio importować do Figma, co pozwala na szybkie modyfikowanie siatek i layoutów zgodnie z własnymi potrzebami. Nawet w darmowej wersji mamy dostęp do ogromnej liczby gotowych komponentów, z których możemy "układać" stronę, a także korzystać z systemu projektowania.
 
-![przykład gotowych układów siatek relume](../../assets/images/posts/relume-figma.JPG)
-
 <center>Rys. Przykład gotowych układów Relume</center>
 
 ## Relume i Webflow – szybkie tworzenie stron
@@ -49,11 +47,7 @@ Relume ma także bezpośrednią integrację z Webflow, dzięki czemu możemy nie
 
 Relume wykorzystuje technologię AI, umożliwiając projektantom i twórcom przygotowywanie projektów stron internetowych, zaczynając od kilku zdań opisu. Użytkownik otrzymuje strukturę strony, podstrony z podziałem na sekcje, a ostatecznie gotowe układy sekcji i treści (nie lorem impsum!). Wszystko można edytować, np. zmienić układ sekcji. Niesamowita oszczędność czasu.
 
-![wygenerowana mapa witryny przy pomocy relume.io](../../assets/images/posts/relume-sitemap.JPG)
-
 <center>Rys. Przykład wygenerowanej mapy witryny</center>
-
-![wygenerowany układ i treść podstrony przez relume.io](../../assets/images/posts/relume-wireframe.JPG)
 
 <center>Rys. Przykład wygenerowanego układu i treści</center>
 
