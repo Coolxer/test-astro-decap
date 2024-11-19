@@ -22,10 +22,10 @@ export async function getStaticPaths({
   paginate: PaginateFunction
 }) {
   const posts: CollectionEntry<"posts">[] = (await getCollection("posts"))
-    .filter((post) => !post.data.draft)
+    .filter((post) => !post?.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
-  const knowledgeBasePosts = posts.filter((post) => post.data.knowledgeBase)
+  const knowledgeBasePosts = posts.filter((post) => post?.data.knowledgeBase)
 
   const paginatedPosts = paginate(knowledgeBasePosts, {
     pageSize: data.site.blog.itemsPerPage,

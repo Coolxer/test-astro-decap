@@ -15,16 +15,16 @@ export async function getStaticPaths({
   paginate: PaginateFunction
 }) {
   const posts = (await getCollection("posts"))
-    .filter((post) => !post.data.draft)
+    .filter((post) => !post?.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
   const categories = [
-    ...new Set(posts.map((post) => post.data.categories).flat()),
+    ...new Set(posts.map((post) => post?.data.categories).flat()),
   ]
 
   return categories.flatMap((category) => {
     const filteredPosts = posts.filter((post) =>
-      post.data.categories.includes(category)
+      post?.data.categories.includes(category)
     )
     const paginatedPosts = paginate(filteredPosts, {
       params: { category: slugify(category) },

@@ -27,15 +27,15 @@ export async function getStaticPaths({
 }: {
   paginate: PaginateFunction
 }) {
-  const posts: CollectionEntry<"posts">[] = (await getCollection("posts"))
-    .filter((post) => !post.data.draft)
+  const posts: CollectionEntry<"posts">[] | [] = (await getCollection("posts"))
+    .filter((post) => !post?.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
 
-  const knowledgeBasePosts = posts.filter((post) => post.data.knowledgeBase)
+  const knowledgeBasePosts = posts.filter((post) => post?.data.knowledgeBase)
   const selectedKnowledgeBasePosts = knowledgeBasePosts.slice(0, 4)
 
   const categories = [
-    ...new Set(posts.map((post) => post.data.categories).flat()),
+    ...new Set(posts.map((post) => post?.data.categories).flat()),
   ]
 
   const paginatedPosts = paginate(posts, {

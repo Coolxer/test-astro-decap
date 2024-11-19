@@ -22,7 +22,7 @@ import PostCard from "@components/blog/PostCard.astro"
 import Categories from "@components/blog/Categories.astro"
 
 export interface Props {
-  post: CollectionEntry<"posts">
+  post: CollectionEntry<"posts"> | null
   headings: MarkdownHeading[]
   meta: Meta
   schema?: Schema
@@ -42,12 +42,12 @@ const { post, headings, meta, schema, relatedPosts, prevPost, nextPost } =
       class="flex max-w-prose flex-col items-center justify-center gap-4 text-center">
       <!-- Breadcrumbs -->
       <MyBreadCrumbs />
-      {post.data.heading && <h1>{post.data.heading}</h1>}
-      {post.data.subheading && <p class="text-lg">{post.data.subheading}</p>}
+      {post?.data.heading && <h1>{post?.data.heading}</h1>}
+      {post?.data.subheading && <p class="text-lg">{post?.data.subheading}</p>}
 
       <!-- Reading time -->
       <!-- <div class="flex flex-col text-center">
-      {readingTime(post.body)}
+      {readingTime(post?.body)}
     </div> -->
     </div>
   </header>
@@ -55,10 +55,10 @@ const { post, headings, meta, schema, relatedPosts, prevPost, nextPost } =
   <Section center maxWidth="max-w-prose">
     <!-- image -->
     {
-      post.data.image.src && (
+      post?.data.image.src && (
         <MyImage
-          src={"posts/" + post.data.image.src}
-          alt={post.data.image.alt}
+          src={"posts/" + post?.data.image.src}
+          alt={post?.data.image.alt}
           width={680}
           height={680}
           loading="eager"
@@ -68,9 +68,9 @@ const { post, headings, meta, schema, relatedPosts, prevPost, nextPost } =
 
     <!--Leading -->
     {
-      post.data.leading && (
+      post?.data.leading && (
         <>
-          <p class="text-left text-lg">{post.data.leading}</p>
+          <p class="text-left text-lg">{post?.data.leading}</p>
           <hr class="h-px w-full border-0 bg-gray" />
         </>
       )
@@ -78,13 +78,13 @@ const { post, headings, meta, schema, relatedPosts, prevPost, nextPost } =
 
     <!-- Video -->
     {
-      post.data.video && (
+      post?.data.video && (
         <div class="flex w-full flex-col gap-4 self-start">
           <p class="text-h3">Jeśli wolisz oglądać: </p>
           <div class="relative h-96 w-full">
             <iframe
               class="t-0 l-0 b-0 r-0 absolute h-full w-full rounded shadow"
-              src={post.data.video}
+              src={post?.data.video}
             />
           </div>
         </div>
@@ -112,7 +112,11 @@ const { post, headings, meta, schema, relatedPosts, prevPost, nextPost } =
     <div
       class="mt-8 flex w-full flex-col justify-between gap-4 md:flex-row md:gap-0">
       <!-- Post categories -->
-      {post.data.categories && <Categories categories={post.data.categories} />}
+      {
+        post?.data.categories && (
+          <Categories categories={post?.data.categories} />
+        )
+      }
 
       <!-- Author -->
       <div class="flex items-center gap-4">
@@ -122,7 +126,7 @@ const { post, headings, meta, schema, relatedPosts, prevPost, nextPost } =
           class="size-10 rounded-full bg-gray p-2 shadow-sm"
         />
         <div class="font-medium">
-          <div>{post.data.author || data.site.blog.author}</div>
+          <div>{post?.data.author || data.site.blog.author}</div>
         </div>
       </div>
     </div>

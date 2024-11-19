@@ -8,22 +8,22 @@ import { type Meta, type Schema } from "@components/core/MySEO.astro"
 
 export async function getStaticPaths() {
   const posts: CollectionEntry<"posts">[] = (await getCollection("posts"))
-    .filter((post) => !post.data.draft)
+    .filter((post) => !post?.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   return posts.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post?.slug },
     props: post,
   }))
 }
 
 type Props = CollectionEntry<"posts">
 
-const posts = (await getCollection("posts")).filter((post) => !post.data.draft)
+const posts = (await getCollection("posts")).filter((post) => !post?.data.draft)
 
 function getNextPost(): CollectionEntry<"posts"> | null {
   let postIndex
   for (const post of posts) {
-    if (post.slug === Astro.params.slug) {
+    if (post?.slug === Astro.params.slug) {
       postIndex = posts.indexOf(post)
       return posts[postIndex + 1] || null
     }
@@ -35,7 +35,7 @@ function getNextPost(): CollectionEntry<"posts"> | null {
 function getPrevPost(): CollectionEntry<"posts"> | null {
   let postIndex
   for (const post of posts) {
-    if (post.slug === Astro.params.slug) {
+    if (post?.slug === Astro.params.slug) {
       postIndex = posts.indexOf(post)
       return posts[postIndex - 1] || null
     }
@@ -57,9 +57,9 @@ function getRelatedPosts(currentPost: CollectionEntry<"posts">) {
 
   const otherPosts = posts.filter(
     (post) =>
-      post.slug !== currentPost.slug &&
+      post?.slug !== currentPost.slug &&
       !relatedPosts.includes(post) &&
-      post.data.categories.some((category) => categories.includes(category))
+      post?.data.categories.some((category) => categories.includes(category))
   )
 
   while (relatedPosts.length < 3 && otherPosts.length > 0) {
@@ -76,23 +76,23 @@ const nextPost: CollectionEntry<"posts"> | null = getNextPost()
 const prevPost: CollectionEntry<"posts"> | null = getPrevPost()
 
 const post = Astro.props
-const { Content, headings } = await post.render()
+const { Content, headings } = await post?.render()
 
 const relatedPosts = getRelatedPosts(post)
 
 const meta: Meta = {
-  ...post.data.meta,
+  ...post?.data.meta,
   article: true,
 }
 
 const schema: Schema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: post.data.meta.title,
-  description: post.data.meta.description,
-  datePublished: post.data.date,
-  dateModified: post.data.date,
-  image: [post.data.image],
+  headline: post?.data.meta.title,
+  description: post?.data.meta.description,
+  datePublished: post?.data.date,
+  dateModified: post?.data.date,
+  image: [post?.data.image],
   author: [
     {
       "@type": "Person",

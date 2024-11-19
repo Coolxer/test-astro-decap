@@ -3,7 +3,9 @@ import { getCollection } from "astro:content"
 import data from "~/data/site.json"
 
 export async function GET(context) {
-  const blog = (await getCollection("posts")).filter((post) => !post.data.draft)
+  const blog = (await getCollection("posts")).filter(
+    (post) => !post?.data.draft
+  )
 
   return rss({
     title: data.site.meta["home-title"],
@@ -12,11 +14,11 @@ export async function GET(context) {
     customData: "<language>pl</language>",
     trailingSlash: true,
     items: blog.map((post) => ({
-      title: post.data.title,
-      link: `/blog/${post.slug}/`,
-      pubDate: post.data.date,
-      description: post.data.description,
-      categories: post.data.categories,
+      title: post?.data.title,
+      link: `/blog/${post?.slug}/`,
+      pubDate: post?.data.date,
+      description: post?.data.description,
+      categories: post?.data.categories,
     })),
   })
 }

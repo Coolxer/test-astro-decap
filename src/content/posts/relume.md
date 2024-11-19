@@ -8,7 +8,7 @@ subheading: Czym jest relume, jakie daje możliwości i jak z niego korzystać?
 leading: Relume to narzędzie, które znacznie przyspiesza proces tworzenia stron internetowych, dzięki gotowym szablonom i integracji z Figma, Webflow i AI.
 image:
   alt: Zrzut ekranu aplikacji relume.io
-  src: relume-hero.JPG
+  src: placeholder.webp
 categories:
   - www
 knowledgeBase: false

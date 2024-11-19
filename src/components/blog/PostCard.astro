@@ -13,7 +13,7 @@ export interface Props {
 
 const { post, class: className } = Astro.props
 
-const link = buildSlug(`/blog/${post.slug}/`)
+const link = buildSlug(`/blog/${post?.slug}/`)
 ---
 
 <div
@@ -23,8 +23,8 @@ const link = buildSlug(`/blog/${post.slug}/`)
   ]}>
   <a href={link} class="absolute left-0 top-0 size-full"></a>
   <MyImage
-    src={"posts/" + post.data.image.src}
-    alt={post.data.image.alt}
+    src={"posts/" + post?.data.image.src}
+    alt={post?.data.image.alt}
     width={500}
     height={500}
     rounded="rounded"
@@ -32,7 +32,7 @@ const link = buildSlug(`/blog/${post.slug}/`)
     loading="eager"
   />
   {
-    post.data.knowledgeBase && (
+    post?.data.knowledgeBase && (
       <div class="absolute -left-1/4 top-8 h-12 w-full -rotate-45 bg-accent p-4 text-center text-white">
         baza wiedzy
       </div>
@@ -42,14 +42,14 @@ const link = buildSlug(`/blog/${post.slug}/`)
     class="flex flex-grow flex-col justify-between gap-2 rounded-b border border-t-0 border-border_color p-6">
     <div class="flex flex-col items-start gap-2">
       <a href={link} class="duration-300 ease-in-out hover:text-accent">
-        <h3 class="text-h5">{post.data.heading}</h3>
+        <h3 class="text-h5">{post?.data.heading}</h3>
       </a>
-      <p class="line-clamp-3">{post.data.subheading}</p>
+      <p class="line-clamp-3">{post?.data.subheading}</p>
     </div>
 
     <div class="flex flex-row flex-wrap gap-2">
       {
-        post.data.categories.map((category) => (
+        post?.data.categories.map((category) => (
           <a
             class="block bg-accent-lightest px-2 hover:bg-accent-light"
             href={buildSlug("/blog/kategoria/" + category)}>
