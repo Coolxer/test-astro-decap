@@ -11,7 +11,10 @@ public_folder: /images
 
 backend:
   name: git-gateway
+  repo: Coolxer/test-astro-decap # to remove?
   branch: decapcms # Branch to update (optional; defaults to master)
+  identity_url: https://auth.decapbridge.com/sites/b3d717d1-8078-4953-bdc6-d178afb710e4
+  gateway_url: https://gateway.decapbridge.com
 collections:
   - name: "tests" # Used in routes, e.g., /admin/collections/blog
     label: "tests" # Used in the UI
