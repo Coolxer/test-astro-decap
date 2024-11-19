@@ -1,4 +1,4 @@
-local_backend: true
+# local_backend: true
 
 site_url: https://your-site.com
 display_url: https://your-site.com
@@ -11,7 +11,7 @@ public_folder: /images
 
 backend:
   name: git-gateway
-  #branch: main # Branch to update (optional; defaults to master)
+  branch: decapcms # Branch to update (optional; defaults to master)
 collections:
   - name: "tests" # Used in routes, e.g., /admin/collections/blog
     label: "tests" # Used in the UI
