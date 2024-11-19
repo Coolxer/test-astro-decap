@@ -22,13 +22,13 @@ import PostCard from "@components/blog/PostCard.astro"
 import Categories from "@components/blog/Categories.astro"
 
 export interface Props {
-  post: CollectionEntry<"blog">
+  post: CollectionEntry<"posts">
   headings: MarkdownHeading[]
   meta: Meta
   schema?: Schema
-  relatedPosts: CollectionEntry<"blog">[]
-  prevPost: CollectionEntry<"blog"> | null
-  nextPost: CollectionEntry<"blog"> | null
+  relatedPosts: CollectionEntry<"posts">[]
+  prevPost: CollectionEntry<"posts"> | null
+  nextPost: CollectionEntry<"posts"> | null
 }
 
 const { post, headings, meta, schema, relatedPosts, prevPost, nextPost } =
@@ -103,7 +103,7 @@ const { post, headings, meta, schema, relatedPosts, prevPost, nextPost } =
 
     <!-- Content -->
     <article
-      class="prose prose-lg text-black prose-p:text-lg prose-img:aspect-square prose-img:w-[680px] prose-img:rounded-lg prose-img:object-cover prose-img:shadow-md">
+      class="prose-img:aspect-square prose prose-lg text-black prose-p:text-lg prose-img:w-[680px] prose-img:rounded-lg prose-img:object-cover prose-img:shadow-md">
       <slot />
     </article>
 

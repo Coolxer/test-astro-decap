@@ -1,0 +1,50 @@
+local_backend: true
+
+site_url: https://your-site.com
+display_url: https://your-site.com
+
+locale: "pl"
+
+logo_url: https://your-site.com/images/logo.svg
+media_folder: src/assets/images
+public_folder: /images
+
+backend:
+  name: git-gateway
+  #branch: main # Branch to update (optional; defaults to master)
+collections:
+  - name: "tests" # Used in routes, e.g., /admin/collections/blog
+    label: "tests" # Used in the UI
+    folder: "src/content/tests" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in frontmatter
+      - { label: "Nazwa", name: "name", widget: "string" }
+      - { label: "Wiek", name: "age", widget: "number", value_type: "int" }
+      - {
+          label: "Ocena",
+          name: "rating",
+          widget: "number",
+          default: 5,
+          value_type: "int",
+          min: 1,
+          max: 10,
+          step: 1,
+        }
+      - { label: "Body", name: "body", widget: "markdown" }
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "About Page"
+        name: "about"
+        file: "src/content/about.yml"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Intro, name: intro, widget: markdown }
+          - label: Team
+            name: team
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Position, name: position, widget: string }
+              - { label: Photo, name: photo, widget: image }

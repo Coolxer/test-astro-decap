@@ -7,7 +7,7 @@
   },
   "site": {
     "domain": "https://www.lukaszmilos.pl",
-    "trailingSlash": "always",
+    "trailingSlash": "ignore",
     "meta": {
       "home-title": "Oficjalna strona Łukasza Miłoś",
       "home-description": "Strona internetowa inż. IT Łukasza Miłoś ",

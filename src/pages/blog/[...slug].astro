@@ -7,7 +7,7 @@ import PostLayout from "@layouts/PostLayout.astro"
 import { type Meta, type Schema } from "@components/core/MySEO.astro"
 
 export async function getStaticPaths() {
-  const posts: CollectionEntry<"blog">[] = (await getCollection("blog"))
+  const posts: CollectionEntry<"posts">[] = (await getCollection("posts"))
     .filter((post) => !post.data.draft)
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   return posts.map((post) => ({
@@ -16,11 +16,11 @@ export async function getStaticPaths() {
   }))
 }
 
-type Props = CollectionEntry<"blog">
+type Props = CollectionEntry<"posts">
 
-const posts = (await getCollection("blog")).filter((post) => !post.data.draft)
+const posts = (await getCollection("posts")).filter((post) => !post.data.draft)
 
-function getNextPost(): CollectionEntry<"blog"> | null {
+function getNextPost(): CollectionEntry<"posts"> | null {
   let postIndex
   for (const post of posts) {
     if (post.slug === Astro.params.slug) {
@@ -32,7 +32,7 @@ function getNextPost(): CollectionEntry<"blog"> | null {
   return null
 }
 
-function getPrevPost(): CollectionEntry<"blog"> | null {
+function getPrevPost(): CollectionEntry<"posts"> | null {
   let postIndex
   for (const post of posts) {
     if (post.slug === Astro.params.slug) {
@@ -44,8 +44,8 @@ function getPrevPost(): CollectionEntry<"blog"> | null {
   return null
 }
 
-function getRelatedPosts(currentPost: CollectionEntry<"blog">) {
-  const relatedPosts: CollectionEntry<"blog">[] = []
+function getRelatedPosts(currentPost: CollectionEntry<"posts">) {
+  const relatedPosts: CollectionEntry<"posts">[] = []
   const categories = currentPost.data.categories
 
   currentPost?.data?.relatedPosts?.forEach((related) => {
@@ -72,8 +72,8 @@ function getRelatedPosts(currentPost: CollectionEntry<"blog">) {
   return relatedPosts.slice(0, 3)
 }
 
-const nextPost: CollectionEntry<"blog"> | null = getNextPost()
-const prevPost: CollectionEntry<"blog"> | null = getPrevPost()
+const nextPost: CollectionEntry<"posts"> | null = getNextPost()
+const prevPost: CollectionEntry<"posts"> | null = getPrevPost()
 
 const post = Astro.props
 const { Content, headings } = await post.render()
