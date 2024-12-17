@@ -1,0 +1,31 @@
+name: Commit on Issue #1 Update
+
+on:
+  issues:
+    types: [opened, edited, closed]
+
+jobs:
+  commit-job:
+    if: ${{ github.event.issue.number == 1 && github.event.issue.title == 'update' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Create commit with Issue Body as Message
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: |
+          # Wykorzystaj treść body issue do stworzenia pliku
+          echo "${ISSUE_BODY}" > issue_body.txt
+
+          # Konfiguracja użytkownika dla commita
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+
+          # Dodaj zmiany do commita
+          git add issue_body.txt
+
+          # Utwórz commit, używając treści body jako wiadomości commit
+          git commit -m "${ISSUE_BODY}"
+          git push
