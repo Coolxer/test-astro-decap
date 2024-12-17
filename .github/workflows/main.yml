@@ -20,8 +20,8 @@ jobs:
           echo "${ISSUE_BODY}" > issue_body.txt
 
           # Konfiguracja użytkownika dla commita
-          git config user.name "GitHub Actions Bot"
-          git config user.email "actions@github.com"
+          git config user.name "coolxer"
+          git config user.email "lukasik4789@gmail.com"
 
           # Dodaj zmiany do commita
           git add issue_body.txt
