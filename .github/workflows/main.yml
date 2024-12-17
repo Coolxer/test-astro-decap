@@ -16,16 +16,11 @@ jobs:
         env:
           ISSUE_BODY: ${{ github.event.issue.body }}
         run: |
-          # Wykorzystaj treść body issue do stworzenia pliku
-          echo "${ISSUE_BODY}" > issue_body.txt
-
           # Konfiguracja użytkownika dla commita
           git config user.name "coolxer"
           git config user.email "lukasik4789@gmail.com"
 
-          # Dodaj zmiany do commita
-          git add issue_body.txt
+          # Tworzenie "pustego" commita
+          git commit --allow-empty -m "${ISSUE_BODY}"
 
-          # Utwórz commit, używając treści body jako wiadomości commit
-          git commit -m "${ISSUE_BODY}"
           git push
