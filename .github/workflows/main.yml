@@ -18,7 +18,7 @@ jobs:
         run: |
           # Konfiguracja użytkownika dla commita
           git config user.name "coolxer"
-          git config user.email "lukasik4789@gmail.com"
+          git config user.email "lukasz.milos.it@gmail.com"
 
           # Tworzenie "pustego" commita
           git commit --allow-empty -m "${ISSUE_BODY}"
